@@ -6,7 +6,7 @@ Contains HTML mod presets and the static web files for the GTO Download Portal a
 
 - **Mod Presets (`*.html`):** Arma 3 Launcher modpack export files (e.g. *GTO Main*, *GTO BlackForest*, *GTO PineSpider*) used by the server container for automatic mod downloading and updates.
 - **Web Portal (`www/`):** Static web frontend served by `gto-download-portal` providing direct downloads of mod preset HTML files and Arma3Sync autoconfig links.
-- **Scripts (`scripts/`):** Utility scripts such as `generate-modlists.sh` to automatically index available HTML mod presets into `modlists.json` and `zeus-modlists.json`.
+- **Scripts (`scripts/`):** Utility scripts such as `generate-modlist.sh` to automatically index available HTML mod presets into `modlists.json` and `zeus-modlists.json`.
 
 ## Usage
 
