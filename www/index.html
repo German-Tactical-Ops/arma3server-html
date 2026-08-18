@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://server.gto-kompanie.de/ -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    
+  <title>GTO Download-Portal</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="./gto_unit_logo.png">
+</head>  
+<body>  
+  <article class="container">  
+    <div class="logo">  
+      <img src="./gto_unit_logo.png" alt="GTO Logo">  
+    </div>  
+    
+    <h1>GTO Download-Portal</h1>  
+    
+    <p>Hier können Sie Modpacks und anderen Dateien der GTO einfach herunterladen.</p>  
+    
+	<ul class="download-list" id="download-list">
+		<li id="loading-entry">Lade Modlisten...</li>
+	</ul>
+	<hr>
+    <button class="download-btn" onclick="kopiereGTOText()">Arma3Sync autoconfig</button>
+  </article>
+  
+<script>  
+    async function ladeModlisten() {
+      const listElement = document.getElementById("download-list");
+      const loadingEntry = document.getElementById("loading-entry");
+
+      try {
+        const response = await fetch("./modlists.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+
+        const files = await response.json();
+        listElement.innerHTML = "";
+
+        if (!Array.isArray(files) || files.length === 0) {
+          const emptyItem = document.createElement("li");
+          emptyItem.textContent = "Keine Modlisten gefunden.";
+          listElement.appendChild(emptyItem);
+          return;
+        }
+
+        for (const file of files) {
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+
+          link.className = "download-btn";
+          link.href = "../" + encodeURIComponent(file);
+          link.download = "";
+          link.textContent = file;
+
+          item.appendChild(link);
+          listElement.appendChild(item);
+        }
+      } catch (error) {
+        if (loadingEntry) {
+          loadingEntry.textContent = "Modlisten konnten nicht geladen werden.";
+        }
+      }
+    }
+
+    function kopiereGTOText() {  
+      const text = "https://server.gto-kompanie.de/arma3sync/.a3s/autoconfig";  
+      navigator.clipboard.writeText(text).then(() => {  
+        alert("autoconfig link wurde in die Zwischenablage kopiert!");  
+      }, () => {  
+        alert("Kopieren fehlgeschlagen!");  
+      });  
+    }  
+
+    ladeModlisten();
+  </script>
+
+
+</body></html>

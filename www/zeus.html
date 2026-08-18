@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://server.gto-kompanie.de/ -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    
+  <title>Zeus Download-Portal</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="./gto_unit_logo.png">
+  <style>
+    /* Purple variant for Zeus page only */
+    .container {
+      position: relative;
+    }
+
+    .home-link {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(109, 62, 165, 0.12);
+      color: #6d3ea5;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      z-index: 1;
+    }
+
+    .home-link:hover {
+      background: rgba(109, 62, 165, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .home-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    h1, p {
+      color: #4c236f;
+    }
+
+    .download-btn {
+      background: #6d3ea5;
+    }
+
+    .download-btn:hover {
+      background: #5b2f8f;
+    }
+  </style>
+</head>  
+<body>  
+  <article class="container">  
+    <a class="home-link" href="./index.html" aria-label="Zur Startseite">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 3.2 2 11h2v8h6v-5h4v5h6v-8h2L12 3.2zm0 2.6 6 4.7V17h-2v-5H8v5H6v-6.5l6-4.7z"/>
+      </svg>
+    </a>
+    <div class="logo">  
+      <img src="./gto_unit_logo.png" alt="GTO Logo">  
+    </div>  
+    
+    <h1>Zeus Download-Portal</h1>  
+    
+    <p>Hier können Sie Dateien für Zeuse einfach herunterladen.</p>  
+    
+    
+    <ul class="download-list" id="download-list">
+      <li id="loading-entry">Lade Modlisten...</li>
+    </ul>
+  </article>
+  
+<script>
+    async function ladeModlisten() {
+      const listElement = document.getElementById("download-list");
+      const loadingEntry = document.getElementById("loading-entry");
+
+      try {
+        const response = await fetch("./zeus-modlists.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+
+        const files = await response.json();
+        listElement.innerHTML = "";
+
+        if (!Array.isArray(files) || files.length === 0) {
+          const emptyItem = document.createElement("li");
+          emptyItem.textContent = "Zeus-Dateien konnten nicht geladen werden.";
+          listElement.appendChild(emptyItem);
+          return;
+        }
+
+        for (const file of files) {
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+
+          link.className = "download-btn";
+          link.href = "../zeus/" + encodeURIComponent(file);
+          link.download = "";
+          link.textContent = file;
+
+          item.appendChild(link);
+          listElement.appendChild(item);
+        }
+      } catch (error) {
+        if (loadingEntry) {
+          loadingEntry.textContent = "Zeus-Listen konnten nicht geladen werden.";
+        }
+      }
+    }
+
+    function kopiereGTOText() {  
+      const text = "https://server.gto-kompanie.de/arma3sync/.a3s/autoconfig";  
+      navigator.clipboard.writeText(text).then(() => {  
+        alert("autoconfig link wurde in die Zwischenablage kopiert!");  
+      }, () => {  
+        alert("Kopieren fehlgeschlagen!");  
+      });  
+    }  
+
+    ladeModlisten();
+  </script>
+
+
+</body></html>
