@@ -100,8 +100,8 @@
           const link = document.createElement("a");
 
           link.className = "download-btn";
-          link.href = "../zeus/" + encodeURIComponent(file);
-          link.download = "";
+          link.href = "./zeus/" + encodeURIComponent(file);
+          link.setAttribute("download", file);
           link.textContent = file;
 
           item.appendChild(link);
