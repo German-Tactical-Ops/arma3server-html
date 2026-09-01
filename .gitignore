@@ -1,2 +1,9 @@
 .DS_Store
 /.idea/
+
+# Alle HTML-Dateien im www-Verzeichnis ignorieren
+www/*.html
+
+# index.html und zeus.html explizit davon ausnehmen
+!www/index.html
+!www/zeus.html

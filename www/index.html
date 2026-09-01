@@ -6,9 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/png" href="./gto_unit_logo.png">
+  <style>
+    .container {
+      position: relative;
+    }
+
+    .zeus-link {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(10, 68, 68, 0.12);
+      color: #0A4444;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      z-index: 1;
+    }
+
+    .zeus-link:hover {
+      background: rgba(10, 68, 68, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .zeus-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+  </style>
 </head>  
 <body>  
   <article class="container">  
+    <a class="zeus-link" href="./zeus.html" aria-label="Zum Zeus Download-Portal">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    </a>
     <div class="logo">  
       <img src="./gto_unit_logo.png" alt="GTO Logo">  
     </div>  
