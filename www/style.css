@@ -1,0 +1,60 @@
+body {  
+  margin: 0;  
+  padding: 0;  
+  font-family: 'Segoe UI', Arial, sans-serif;  
+  background: linear-gradient(120deg, #e0eafc, #cfdef3);  
+  min-height: 100vh;  
+}  
+.container {  
+  background: #fff;  
+  max-width: 400px;  
+  margin: 60px auto;  
+  border-radius: 16px;  
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);  
+  padding: 40px 30px;  
+  text-align: center;  
+}  
+.logo {  
+  margin-bottom: 18px;  
+}  
+.logo img {  
+  height: 128px;  
+}  
+h1 {  
+  font-size: 2em;  
+  margin-bottom: 10px;  
+  color: #0A4444;  
+  letter-spacing: 1px;  
+}  
+p {  
+  color: #0A4444;  
+  margin-bottom: 30px;  
+}  
+.download-list {  
+  list-style: none;  
+  padding: 0;  
+}  
+.download-list li {  
+  margin: 20px 0;  
+}  
+.download-btn {  
+  display: inline-block;  
+  background: #0A4444;  
+  color: #fff;  
+  padding: 12px 28px;  
+  border-radius: 6px;  
+  font-size: 1.08em;  
+  text-decoration: none;  
+  font-weight: bold;  
+  box-shadow: 0 2px 8px rgba(32,64,128,0.07);  
+  transition: background 0.23s;  
+}  
+.download-btn:hover {  
+  background: #0A3434;  
+}  
+@media (max-width: 500px) {  
+  .container {  
+    max-width: 96vw;  
+    padding: 15vw 4vw;  
+  }  
+}
