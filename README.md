@@ -1,14 +1,12 @@
 # arma3server-html
 
-Contains HTML mod presets and the static web files for the GTO Download Portal and server containers.
+Contains HTML mod presets for Arma 3 server containers and the GTO Download Portal.
 
 ## Overview
 
-- **Mod Presets (`*.html`):** Arma 3 Launcher modpack export files (e.g. *GTO Main*, *GTO BlackForest*, *GTO PineSpider*) used by the server container for automatic mod downloading and updates.
-- **Web Portal (`www/`):** Static web frontend served by `download-portal` providing direct downloads of mod preset HTML files and Arma3Sync autoconfig links.
-- **Scripts (`scripts/`):** Utility scripts such as `generate-modlist.sh` to automatically index available HTML mod presets into `modlists.json` and `zeus-modlists.json`.
+- **Mod Presets (`*.html`):** Arma 3 Launcher modpack export files (e.g. *GTO Main*, *GTO British*, etc.) used by the server container for automatic mod downloading and updates, and by the download portal for direct user downloads.
 
 ## Usage
 
 - **Server Container:** Set `REPO_HTML` to point to this repository to automatically download and sync modpresets.
-- **Download Portal:** Mount or clone into `download-portal` (`NGINX_WEB_ROOT`) to host the web interface.
+- **Download Portal:** Set `GIT_REPO_URL` (or `HTML_REPO_URL`) in `modpack-html` to automatically index and serve mod presets.
